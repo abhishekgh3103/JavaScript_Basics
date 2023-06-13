@@ -1,0 +1,53 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* Here in Fundamentals Part 3 : I learnt about Functions.
+            Differences between function declaration and function expression, also about arrow functions
+            Parameters and arguements. How return value works in chained funciton calls.
+        */
+       
+        //Assignment
+
+        //1. Write a function called add7 that takes one number and returns that number + 7.
+
+        function add7(num){
+            return num + 7
+        }
+
+        console.log(add7(8))    //output 15
+
+        //2. Write a function called multiply that takes 2 numbers and returns their product.
+
+        function multiply(num1, num2){
+            return num1*num2
+        }
+
+        console.log(multiply(3, 7))
+
+        //3. Write a function called capitalize that takes a string and returns that string with only the first letter capitalized.
+        //   Make sure that it can take strings that are lowercase, UPPERCASE or BoTh.
+
+        function captialize(word){
+            console.log(typeof word)
+            let modifyWord = word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+            console.log(modifyWord)
+        }
+        captialize('bengAlurU')     //outputs- Bengaluru
+
+        //4. Write a function called lastLetter that takes a string and returns the very last letter of that string:
+        //   lastLetter("abcd") should return "d"
+
+        function lastLetter(word){
+            return word.slice(-1)
+        }
+
+        console.log(lastLetter('HeyAbhishek'))      //outputs- k
+    </script>
+</body>
+</html>
