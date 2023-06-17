@@ -38,7 +38,34 @@ function playRound(playerSelection, computerSelection) {
             }
     }
 }
-const playerSelection = prompt('Enter your choice(rock, paper, scissor) ')
-const computerSelection = getComputerChoice()
+let playerSelection = undefined
+let computerSelection= undefined
 
-console.log(playRound(playerSelection, computerSelection))
+function game(){
+    let playerScore = 0
+    let computerScore = 0
+    for(let i=0; i < 5; i++){
+        playerSelection = prompt('Enter your choice(rock, paper, scissor) ')
+        computerSelection = getComputerChoice()
+        let result = playRound(playerSelection, computerSelection)
+        console.log(result)
+        if (result.includes('Won')){
+            playerScore++
+        }else if(result.includes('Tie')) {
+            computerScore += 0.5
+            playerScore += 0.5
+        }else{
+            computerScore++
+        }
+    }
+    if (playerScore > computerScore){
+        console.log(`You are a Winner ${playerScore} - ${computerScore}`)
+    }else if(playerScore == computerScore){
+        console.log(`It\s a Draw ${playerScore} - ${computerScore}`)
+    }else{
+        console.log(`You are a Loser ${playerScore} - ${computerScore}`)
+    }
+}
+
+game()
+
