@@ -1,0 +1,19 @@
+body{
+    text-align: center;
+    font-family:'Times New Roman', Times, serif;
+    font-size: large;
+}
+
+div.result{
+    padding-top: 5em;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bolder;
+    font-size: larger;
+}
+
+div.final-result{
+    padding-top: 5em;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bolder;
+    font-size:xx-large;
+}

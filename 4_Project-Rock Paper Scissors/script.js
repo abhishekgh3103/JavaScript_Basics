@@ -1,53 +1,68 @@
-let arr = ['rock', 'paper', 'scissor']
+let arr = ['rock', 'paper', 'scissors']
 function getComputerChoice() {
     return (arr[(Math.floor(Math.random() * arr.length))]);
 }
 
-function playRound(playerSelection, computerSelection) {
+function playRound(playerSelection,comp_value) {
+    let result = undefined;
     switch (playerSelection.toLowerCase())
     {
         case 'rock':
-            switch (computerSelection)
+            switch (comp_value)
             {
                 case 'paper':
-                    return 'You Lose! Paper beats Rock';
+                    result ='You Lose! Paper beats Rock';
+                    break;
                 case 'scissor':
-                    return 'You Won! Rock beats Scissor';
+                    result = 'You Won! Rock beats Scissor';
+                    break;
                 default:
-                    return 'It\s a Tie!'
+                    result = 'It\s a Tie!';
+                    break;
             }
         case 'paper':
-            switch (computerSelection)
+            switch (comp_value)
             {
                 case 'rock':
-                    return 'You Won! Paper beats Rock';
+                    result = 'You Won! Paper beats Rock';
+                    break;
                 case 'scissor':
-                    return 'You Loose! Scissor beats paper';
+                    result = 'You Loose! Scissor beats paper';
+                    break;
                 default:
-                    return 'It\s a Tie!'
+                    result = 'It\s a Tie!';
+                    break;
             }
-        case 'scissor':
-            switch (computerSelection)
+        case 'scissors':
+            switch (comp_value)
             {
                 case 'rock':
-                    return 'You Loose! Rock beats Scissor';
+                    result = 'You Loose! Rock beats Scissor';
+                    break;
                 case 'paper':
-                    return'You Won! Scissor beats paper';
+                    result = 'You Won! Scissor beats paper';
+                    break;
                 default:
-                    return 'It\s a Tie!'
+                    result = 'It\s a Tie!';
+                    break;
             }
     }
+    const div = document.querySelector('.result');
+    div.textContent = result;
+    return result;
 }
-let playerSelection = undefined
-let computerSelection= undefined
+// let playerSelection = undefined
+// let computerSelection= undefined
 
-function game(){
-    let playerScore = 0
-    let computerScore = 0
+
+function game(playerSelection){
+    let playerScore = 0;
+    let computerScore = 0;
+    let finalResult = undefined;
     for(let i=0; i < 5; i++){
-        playerSelection = prompt('Enter your choice(rock, paper, scissor) ')
-        computerSelection = getComputerChoice()
-        let result = playRound(playerSelection, computerSelection)
+        // playerSelection = prompt('Enter your choice(rock, paper, scissor) ')
+        // computerSelection = getComputerChoice()
+        let result = playRound(playerSelection, getComputerChoice())
         console.log(result)
         if (result.includes('Won')){
             playerScore++
@@ -57,15 +72,26 @@ function game(){
         }else{
             computerScore++
         }
+        
     }
     if (playerScore > computerScore){
-        console.log(`You are a Winner ${playerScore} - ${computerScore}`)
+        finalResult = `You are a Winner ${playerScore} - ${computerScore}`;
     }else if(playerScore == computerScore){
-        console.log(`It\s a Draw ${playerScore} - ${computerScore}`)
+        finalResult = `It\s a Draw ${playerScore} - ${computerScore}`;
     }else{
-        console.log(`You are a Loser ${playerScore} - ${computerScore}`)
+        finalResult = `You are a Loser ${playerScore} - ${computerScore}`;
     }
-}
+    
+        const div = document.querySelector('.final-result');
+        div.textContent = finalResult;
+    }
 
-game()
 
+let playerSelection = undefined;
+const btns = document.querySelectorAll('button');
+btns.forEach(btn => {
+    btn.addEventListener('click', event => {
+        playerSelection = event.target.textContent.toLowerCase();
+        game(playerSelection);
+    })
+});
