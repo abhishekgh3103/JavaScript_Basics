@@ -16,3 +16,5 @@
     3. using addEventListener in js file
     Attaching listeners to a group of nodes
     forEach can be used to iterate over the group of nodes
+    learnt about event's target
+    some of other events like dbclick, keydown, keyup
