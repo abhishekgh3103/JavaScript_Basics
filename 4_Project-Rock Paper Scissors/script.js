@@ -55,43 +55,51 @@ function playRound(playerSelection,comp_value) {
 // let computerSelection= undefined
 
 
-function game(playerSelection){
-    let playerScore = 0;
-    let computerScore = 0;
+function game(){
+    const pwin = winner.filter((item)=> item.includes('Won')).length;
+    const cwin = winner.filter((item)=> item.includes('Loose')).length;
     let finalResult = undefined;
-    for(let i=0; i < 5; i++){
-        // playerSelection = prompt('Enter your choice(rock, paper, scissor) ')
-        // computerSelection = getComputerChoice()
-        let result = playRound(playerSelection, getComputerChoice())
-        console.log(result)
-        if (result.includes('Won')){
-            playerScore++
-        }else if(result.includes('Tie')) {
-            computerScore += 0.5
-            playerScore += 0.5
-        }else{
-            computerScore++
-        }
-        
-    }
-    if (playerScore > computerScore){
-        finalResult = `You are a Winner ${playerScore} - ${computerScore}`;
-    }else if(playerScore == computerScore){
-        finalResult = `It\s a Draw ${playerScore} - ${computerScore}`;
+    if (pwin > cwin){
+        finalResult = `You are a Winner ${pwin} - ${cwin}`;
+    }else if(pwin == cwin){
+        finalResult = `It\s a Draw ${pwin} - ${cwin}`;
     }else{
-        finalResult = `You are a Loser ${playerScore} - ${computerScore}`;
+        finalResult = `You are a Loser ${pwin} - ${cwin}`;
     }
     
-        const div = document.querySelector('.final-result');
-        div.textContent = finalResult;
+        const frdiv = document.querySelector('.final-result');
+        frdiv.textContent = finalResult;
+        
+        document.body.appendChild(rsbtn);
     }
 
 
 let playerSelection = undefined;
+let winner = []
 const btns = document.querySelectorAll('button');
 btns.forEach(btn => {
     btn.addEventListener('click', event => {
-        playerSelection = event.target.textContent.toLowerCase();
-        game(playerSelection);
-    })
+          console.log(event.target.value);
+          playerSelection = event.target.value;
+            let result = playRound(playerSelection, getComputerChoice());
+            console.log(result);
+            winner.push(result);
+            console.log(winner);
+            if(winner.length >= 5){
+                console.log('Thats all Abhi 5 done');
+                game();
+                //reset();
+            }
+        }
+    )
+
 });
+const frdiv = document.querySelector('.final-result');
+const rsbtn = document.createElement('button');
+rsbtn.textContent = 'Reset';
+rsbtn.addEventListener('click', () =>{
+    winner = [];
+    finalResult = undefined;
+    frdiv.textContent = finalResult;
+    rsbtn.remove();
+})
