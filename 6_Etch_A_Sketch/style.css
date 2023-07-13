@@ -1,0 +1,10 @@
+.container{
+    text-align: center;
+}
+
+.board{
+    display: grid;
+    width: 70%;
+    height: 80%;
+    background-color: aqua;
+}
