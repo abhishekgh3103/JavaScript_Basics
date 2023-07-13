@@ -67,7 +67,7 @@ function game(){
         finalResult = `You are a Loser ${pwin} - ${cwin}`;
     }
     
-        const frdiv = document.querySelector('.final-result');
+        //const frdiv = document.querySelector('.final-result');
         frdiv.textContent = finalResult;
         
         document.body.appendChild(rsbtn);
